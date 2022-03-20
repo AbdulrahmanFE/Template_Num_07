@@ -1,0 +1,562 @@
+/* Google Fonts */
+  @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700&display=swap');
+/* Variables */
+  :root{
+    --BodyFontsFamily: 'Raleway', sans-serif;
+    --MainColor: #FFE600;
+    --MainAltColor: #1B1B1B;
+    --MainSectionBg: #F5F5F5;
+    --MainTransition: 0.4s;
+    --MainPaddingTop: 100px;
+    --MainPaddingBottom: 100px;
+  }
+/* Global Rules */
+  *{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  ::selection {
+    background-color: black;
+    color: var(--MainColor);
+  }
+  body{
+    font-family: var(--BodyFontsFamily);
+    color: black;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  a {
+    text-decoration: none;
+  }
+  i {
+    cursor: pointer;
+  }
+  h1, h2, h3 {
+    text-transform: uppercase;
+  }
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+/* Small Screen */
+  @media (min-width: 768px) {
+    .container{
+      width: 750px;
+    }
+  }
+/* Medium Screen */
+  @media (min-width: 992px) {
+    .container{
+      width: 970px;
+    }
+  }
+/* Lager Screen*/
+  @media (min-width: 1200px) {
+    .container{
+      width: 1170px;
+    }
+  }
+/* Styling The Header Section */
+  header {
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    left: 0;
+  }
+  header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 110.34px;
+  }
+  header .header-nav {
+    position: relative;
+  }
+  .header-nav .bars {
+    width: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 5px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 15px;
+    cursor: pointer;
+  }
+  .header-nav:hover .bars::before {
+    content: "";
+    position: absolute;
+    border-width: 15px;
+    border-style: solid;
+    border-color: var(--MainColor) transparent var(--MainColor) transparent;
+    bottom: -29.34px;
+    right: 0;
+  }
+  .header-nav .bars span {
+    width: 100%;
+    background-color: var(--MainColor);
+    height: 3px;
+    border-radius: 5px;
+  }
+  .header-nav .bars span:nth-of-type(2),
+  .header-nav .bars span:nth-of-type(3) {
+    transition: var(--MainTransition);
+  }
+  .header-nav .bars span:nth-of-type(2) {
+    width: 80%;
+  }
+  .header-nav .bars span:nth-of-type(3) {
+    width: 60%;
+  }
+  .header-nav:hover .bars span:nth-of-type(2),
+  .header-nav:hover .bars span:nth-of-type(3) {
+    width: 100%;
+  }
+  .main-nav {
+    position: absolute;
+    right: 15px;
+    top: calc(100% + 40px);
+    min-width: 300px;
+    background-color: rgb(0 0 0 / 90%);
+    z-index: 1;
+    border-bottom: 3px solid var(--MainColor);
+    display: none;
+  }
+  .header-nav:hover .main-nav {
+    display: unset;
+  }
+  .main-nav li:not(:last-child) {
+  border-bottom: 1px solid #111;
+  }
+  .main-nav a {
+    text-transform: uppercase;
+    color: white;
+    display: block;
+    padding: 20px;
+    transition: var(--MainTransition);
+    font-weight: 500;
+    position: relative;
+  }
+  .main-nav a:hover {
+    padding-left: 30px;
+    color: var(--MainColor);
+    background-color: rgb(0 0 0 / 95%);
+  }
+  .main-nav a::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    border-bottom: 2px solid var(--MainColor);
+    width: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: var( --MainTransition);
+  }
+  .main-nav a:hover::before {
+    width: 100%;
+  }
+  .main-nav li:last-child a::before {
+    display: none;
+  }
+/* ----- Making The Header Section Responsive ----- */
+  @media (max-width: 767px) {
+    .header-nav {
+      width: 100%;
+    }
+    .main-nav { 
+      min-width: 100%;
+    }
+  }
+/* Styling The Landing Section */
+  .landing {
+    background: var(--MainAltColor);
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+  .landing .content {
+    text-align: center;
+    padding-top: 50px;
+  }
+  .landing .title {
+    font-weight: normal;
+    letter-spacing: 8px;
+    font-size: 32px;
+    margin: 0;
+    margin-bottom: 20px;
+  }
+  .landing .des {
+    text-transform: capitalize;
+    letter-spacing: 4px;
+  }
+  .landing .learn-bth {
+    display: block;
+    background-color: var(--MainColor);
+    width: fit-content;
+    margin: 40px auto 0;
+    padding: 12px 30px;
+    text-transform: uppercase;
+    color: var(--MainAltColor);
+    font-weight: 700;
+    letter-spacing: 2px;
+    border: 2px solid var(--MainColor);
+    border-radius: 2px;
+    transition: var(--MainTransition);
+  }
+  .landing .learn-bth:hover {
+    box-shadow: inset 0 0 0 24px var(--MainAltColor);
+    color: var(--MainColor);
+  }
+  .landing .arrow-content {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .landing .arrow-content img {
+    max-height: 40px;
+  }
+  .landing .arrow {
+    padding: 30px 20px 10px;
+  }
+  .landing .arrow > img {
+    animation: bouncing 1.25s linear infinite;
+  }
+/* ----- Making The Landing Section Responsive ----- */
+  @media (max-width: 991px) {
+    .landing .title {
+      letter-spacing: 2px;
+      line-height: 1.4;
+    }
+  }
+  @media (max-width: 575px) {
+    .landing .des {
+      letter-spacing: 2px;
+      line-height: 1.6;
+    }
+  }
+/* Styling The Mountain Section */
+  .mountain {
+    padding: 150px 0;
+    background-color: white;
+  }
+  .mountain .content {
+    text-align: center;
+  }
+  .mountain-des {
+    color: var(--MainAltColor);
+    max-width: 575px;
+    margin: 60px auto 0;
+    line-height: 2;
+  }
+/* ------- Components Section Heading ------- */
+  .section-heading {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+  .section-heading h2.title {
+    font-weight: normal;
+    letter-spacing: 12px;
+    margin: 30px auto;
+    font-size: 24px;
+  }
+  .section-heading p.des {
+    max-width: 725px;
+    line-height: 2;
+    margin: 0 auto;
+    color: #444;
+  }
+/* ----- Making The Section Heading Responsive ----- */
+  @media (max-width: 991px) {
+    .section-heading h2.title {
+      letter-spacing: 8px;
+    }
+  }
+  @media (max-width: 575px) {
+    .section-heading h2.title {
+      font-size: 20px;
+      letter-spacing: 4px;
+    }
+    .section-heading p.des {
+      font-size: 14px;
+    }
+  }
+/* Styling The Services Section */
+  .services {
+    padding-top: var(--MainPaddingTop);
+    padding-bottom: var(--MainPaddingBottom);
+    background-color: var(--MainSectionBg);
+  }
+  .services .boxes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+  }
+  .services .boxes {
+    cursor: pointer;
+    transition: var(--MainTransition);
+  }
+  .services .boxes:hover {
+    transform: translateY(-10px);
+  }
+  .services .caption-box {
+    text-align: center;
+    background-color: white;
+    color: var(--MainAltColor);
+    padding: 40px 15px 20px;
+    border-radius: 2px;
+    height: 365px;
+    margin-bottom: 26px;
+    box-shadow: 0 0 15px rgb(27 27 27 / 15%);
+    z-index: 1;
+    position: relative;
+    overflow: hidden;
+  }
+  .services .caption-box::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 0;
+    z-index: -1;
+    background-color: #fbfbfb;
+    transition: 0.475s;
+  }
+  .services .boxes:hover .caption-box:before{
+    height: 100%;
+  }
+  .services h3.title {
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: 4px;
+    margin: 30px auto;
+  }
+  .services .caption-box .des {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+  .services .skills-box {
+    background-color: white;
+    color: var(--MainAltColor);
+    padding: 12px 10px 16px;
+    border-radius: 2px;
+    box-shadow: 0 0 15px rgb(27 27 27 / 8%);
+    position: relative;
+    overflow: hidden;
+  }
+  .services .caption-box::after,
+  .services .skills-box::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 4px;
+    background-color: var(--MainAltColor);
+    transition: var(--MainTransition);
+  }
+  .services .boxes:hover .caption-box::after,
+  .services .boxes:hover .skills-box::before{
+    width: 100%;
+  }
+  .services h4.title {
+    text-transform: capitalize;
+    font-weight: 500;
+  }
+  .services .skill .prog-holder {
+    position: relative;
+    width: 100%;
+    height: 6px;
+    border-radius: 6px;
+    background-color: #eee;
+    overflow: hidden;
+    margin: 6px auto 16px;
+  }
+  .services .skill:last-child .prog-holder {
+    margin: 6px auto 0;
+  }
+  .services .skill .prog {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background-color: var(--MainAltColor);
+    transition: var(--MainTransition);
+  }
+  .services .boxes:hover .skill .prog {
+    background-color: var(--MainColor);
+  }
+/* Styling The Stats Section */
+  .stats {
+    padding-top: var(--MainPaddingTop);
+    padding-bottom: var(--MainPaddingBottom);
+    background-color: var(--MainAltColor);
+  }
+  .stats .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+  }
+  .stats .stat-box {
+    text-align: center;
+    background-color: #f2f2f2;
+    padding: 16px 0px;
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .stats .stat-box::before {
+    content: "";
+    position: absolute;
+    height: 50%;
+    width: 125%;
+    background-color: var(--MainColor);
+    animation: spin 4s linear infinite;
+  }
+  .stats .stat-box::after {
+    content: "";
+    position: absolute;
+    background: white;
+    inset: 4px;
+    border-radius: 2px;
+  }
+  .stats p {
+    color: var(--MainAltColor);
+    font-weight: 500;
+    letter-spacing: 2px;
+    z-index: 100;
+  }
+  .stats .stat-num {
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+  .stats .stat-name {
+    text-transform: uppercase;
+    font-size: 14px;
+  }
+/* Styling The Portfolio Section */
+  .portfolio {
+    padding-top: var(--MainPaddingTop);
+    padding-bottom: var(--MainPaddingBottom); 
+  }
+  .portfolio .content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+  }
+  .portfolio .filter {
+    flex: 1;
+    text-align: center;
+    border: 1px solid;
+    border-color: var(--MainAltColor) transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .portfolio .filter a {
+    display: block;
+    color: var(--MainAltColor);
+    padding: 20px;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: var(--MainTransition);
+  }
+  .portfolio .filter:first-of-type a:first-child,
+  .portfolio .filter a:hover {
+    background-color: var(--MainAltColor);
+    color: var(--MainColor);
+  }
+
+
+/* ----- Making The Portfolio Section Responsive ----- */
+  @media (max-width: 991px) {
+    .portfolio .content {
+      flex-direction: column;
+      justify-content: center;
+      gap: 20px;
+    }
+    .portfolio .content .image {
+      order: 1;
+      margin-bottom: 20px;
+    }
+    .portfolio .content .filter {
+      gap: 12px;
+    }
+    .portfolio .content .filter:first-of-type {
+      order: 2;
+      border-bottom: none;
+    }
+    .portfolio .content .filter:last-of-type {
+      order: 3;
+      border-top: none;
+    }
+  }
+  @media (max-width: 575px) {
+    .portfolio .filter a {
+      padding: 20px 10px;
+    }
+  }
+
+
+
+/* padding-top: var(--MainPaddingTop);
+padding-bottom: var(--MainPaddingBottom); 
+                <div class="section-heading">
+          <div class="image">
+            <img src="Images/axes.svg" alt="axes">
+          </div>
+          <h2 class="title">our </h2>
+          <p class="des">
+            estibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Quisque velit nisi, pretium ut lacinia in,
+            elementum id enim. Donec sollicitudin molestie malesuada
+          </p>
+        </div>
+        */
+/* ------ Animation ------ */
+/* -------- Bouncing Animation -------- */
+  @keyframes bouncing {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-20px);
+    }
+    60% {
+      transform: translateY(-10px);
+    }
+  }
+/* -------- Spin Animation -------- */
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
