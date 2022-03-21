@@ -37,6 +37,16 @@
   a {
     text-decoration: none;
   }
+  .bth {
+    display: block;
+    width: fit-content;
+    text-transform: uppercase;
+    background-color: var(--MainColor);
+    color: var(--MainAltColor);
+    border: 2px solid var(--MainColor);
+    border-radius: 2px;
+    transition: var(--MainTransition);
+  }
   i {
     cursor: pointer;
   }
@@ -204,21 +214,13 @@
     text-transform: capitalize;
     letter-spacing: 4px;
   }
-  .landing .learn-bth {
-    display: block;
-    background-color: var(--MainColor);
-    width: fit-content;
+  .landing .learn.bth {
     margin: 40px auto 0;
     padding: 12px 30px;
-    text-transform: uppercase;
-    color: var(--MainAltColor);
     font-weight: 700;
     letter-spacing: 2px;
-    border: 2px solid var(--MainColor);
-    border-radius: 2px;
-    transition: var(--MainTransition);
   }
-  .landing .learn-bth:hover {
+  .landing .learn.bth:hover {
     box-shadow: inset 0 0 0 24px var(--MainAltColor);
     color: var(--MainColor);
   }
@@ -318,32 +320,30 @@
   .services .boxes:hover {
     transform: translateY(-10px);
   }
-  .services .caption-box {
-    text-align: center;
-    background-color: white;
+  .services .caption-box,
+  .services .skills-box {
     color: var(--MainAltColor);
-    padding: 40px 15px 20px;
+    background-color: white;
     border-radius: 2px;
-    height: 365px;
-    margin-bottom: 26px;
-    box-shadow: 0 0 15px rgb(27 27 27 / 15%);
     z-index: 1;
     position: relative;
     overflow: hidden;
+    transition: var(--MainTransition);
   }
-  .services .caption-box::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 0;
-    z-index: -1;
-    background-color: #fbfbfb;
-    transition: 0.475s;
+  .services .boxes:hover .caption-box,
+  .services .boxes:hover .skills-box {
+    color: white;
   }
-  .services .boxes:hover .caption-box:before{
-    height: 100%;
+  .services .caption-box {
+    text-align: center;
+    padding: 40px 15px 20px;
+    height: 365px;
+    margin-bottom: 26px;
+    box-shadow: 0 0 15px rgb(27 27 27 / 15%);
+  }
+  .services .boxes:hover .caption-box {
+    border-radius: 2px 2px 0 0;
+    margin-bottom: 0;
   }
   .services h3.title {
     font-weight: 500;
@@ -356,28 +356,48 @@
     line-height: 1.8;
   }
   .services .skills-box {
-    background-color: white;
-    color: var(--MainAltColor);
     padding: 12px 10px 16px;
-    border-radius: 2px;
     box-shadow: 0 0 15px rgb(27 27 27 / 8%);
-    position: relative;
-    overflow: hidden;
   }
-  .services .caption-box::after,
+  .services .boxes:hover .skills-box {
+    border-radius: 0 0 2px 2px;
+  }
+  .services .caption-box::before,
   .services .skills-box::before {
     content: "";
     position: absolute;
+    left: 0;
+    width: 100%;
+    height: 0;
+    z-index: -1;
+    background-color: var(--MainAltColor);
+    transition: var(--MainTransition);
+  }
+  .services .caption-box::after,
+  .services .caption-box::before {
+    top: 0;
+  }
+  .services .skills-box::after,
+  .services .skills-box::before {
     bottom: 0;
+  }
+  .services .boxes:hover .caption-box:before,
+  .services .boxes:hover .skills-box:before{
+    height: 100%;
+  }
+  .services .caption-box::after,
+  .services .skills-box::after {
+    content: "";
+    position: absolute;
     left: 50%;
     transform: translateX(-50%);
     width: 0;
     height: 4px;
-    background-color: var(--MainAltColor);
+    background-color: #444;
     transition: var(--MainTransition);
   }
   .services .boxes:hover .caption-box::after,
-  .services .boxes:hover .skills-box::before{
+  .services .boxes:hover .skills-box::after{
     width: 100%;
   }
   .services h4.title {
@@ -418,9 +438,10 @@
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 30px;
   }
-  .stats .stat-box {
+  .stats .stats-box {
     text-align: center;
-    background-color: #f2f2f2;
+    background-color: #000;
+    color: var(--MainAltColor);
     padding: 16px 0px;
     border-radius: 2px;
     position: relative;
@@ -429,46 +450,57 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+    transition: var(--MainTransition);
   }
-  .stats .stat-box::before {
+  .stats .stats-box:hover {
+    transform: scale(1.025) translateY(-2px);
+    color: var(--MainColor);
+  }
+  .stats .stats-box::before {
     content: "";
     position: absolute;
     height: 50%;
     width: 125%;
-    background-color: var(--MainColor);
-    animation: spin 4s linear infinite;
+    background-color: #444;
+    animation: spin 3.5s linear infinite;
   }
-  .stats .stat-box::after {
+  .stats .stats-box::after {
     content: "";
     position: absolute;
     background: white;
     inset: 4px;
     border-radius: 2px;
+    transition: var(--MainTransition);
+  }
+  .stats-box:hover::after {
+    background-color: var(--MainAltColor);
   }
   .stats p {
-    color: var(--MainAltColor);
-    font-weight: 500;
     letter-spacing: 2px;
     z-index: 100;
+    font-weight: 700;
   }
-  .stats .stat-num {
+  .stats .stats-num {
     font-size: 20px;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
   }
-  .stats .stat-name {
+  .stats .stats-name {
     text-transform: uppercase;
     font-size: 14px;
   }
 /* Styling The Portfolio Section */
   .portfolio {
     padding-top: var(--MainPaddingTop);
-    padding-bottom: var(--MainPaddingBottom); 
+    padding-bottom: calc(var(--MainPaddingBottom) + 35px);
+    position: relative;
   }
   .portfolio .content {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 60px;
+    margin-bottom: 80px;
   }
   .portfolio .filter {
     flex: 1;
@@ -492,9 +524,101 @@
     background-color: var(--MainAltColor);
     color: var(--MainColor);
   }
-
-
+  .portfolio .images-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .portfolio .images-container .box {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    width: calc(100% / 6);
+    height: 350px;
+  }
+  .portfolio .images-container .box:first-of-type,
+  .portfolio .images-container .box:nth-of-type(3),
+  .portfolio .images-container .box:nth-of-type(5) {
+    background-color: var(--MainAltColor);
+  }
+  .portfolio .images-container .box:last-of-type,
+  .portfolio .images-container .box:nth-of-type(2),
+  .portfolio .images-container .box:nth-of-type(4) {
+    background-color: #999;
+  }
+  .portfolio .images-container .box::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 70%;
+    background: rgb(255 230 0 / 90%);
+    transition: var(--MainTransition) linear;
+    opacity: 0;
+  }
+  .portfolio .images-container .box:hover::before {
+    opacity: 1;
+  }
+  .portfolio .images-container .caption {
+    position: absolute;
+    left: 50%;
+    top: -100%;
+    transform: translate(-50%, -50%);
+    width: 95%;
+    height: 55%;
+    padding: 20px 0;
+    background: white;
+    color: var(--MainAltColor);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: var(--MainTransition) linear;
+  }
+  .portfolio .images-container .box:hover .caption {
+    top: 50%;
+  }
+  .portfolio .images-container .title {
+    font-weight: 500;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  .portfolio .images-container .des {
+    font-size: 12px;
+    line-height: 1.6;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  .portfolio .like.bth {
+    padding: 12px 30px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .portfolio .like.bth:hover {
+    box-shadow: inset 0 0 0 24px var(--MainAltColor);
+    color: white;
+    border-color: #111;
+    background-color: var(--MainAltColor);
+  }
 /* ----- Making The Portfolio Section Responsive ----- */
+  @media (max-width: 1349px) {
+    .portfolio .images-container {
+      justify-content: center;
+      gap: 10px;
+    }
+    .portfolio .images-container .box {
+      width: calc(90% / 3);
+    }
+    .portfolio .images-container .des {
+      max-width: 85%;
+    }
+  }
   @media (max-width: 991px) {
     .portfolio .content {
       flex-direction: column;
@@ -503,7 +627,7 @@
     }
     .portfolio .content .image {
       order: 1;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
     .portfolio .content .filter {
       gap: 12px;
@@ -517,28 +641,64 @@
       border-top: none;
     }
   }
+  @media (max-width: 767px) {
+    .portfolio .images-container .box {
+      width: calc(90% / 2);
+    }
+    .portfolio .images-container {
+      gap: 30px 10px;
+    }
+  }
   @media (max-width: 575px) {
     .portfolio .filter a {
       padding: 20px 10px;
     }
+    .portfolio .images-container .box {
+      width: calc(90% / 1);
+    }
   }
+/* Styling The Video Section */
+  section.video {
+    padding-top: var(--MainPaddingTop);
+    padding-bottom: var(--MainPaddingBottom)
+  }
+  section.video .box{
+    background-color: var(--MainAltColor);
+    height: 400px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .view.bth {
+    background-color: transparent;
+    color: var(--MainColor);
+    padding: 20px 40px;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 8px;
+  }
+  .view.bth:hover {
+    color: var(--MainAltColor);
+    background-color: var(--MainColor);
+  }
+/* ----- Making The Video Section Responsive ----- */
+  @media (max-width: 575px) {
+    .view.bth {
+      padding: 18px;
+      letter-spacing: 4px;
+      text-align: center;
+    }
+  }
+/* Styling The Team Section */
+  
+/* ----- Making The Team Section Responsive ----- */
 
-
-
-/* padding-top: var(--MainPaddingTop);
-padding-bottom: var(--MainPaddingBottom); 
-                <div class="section-heading">
-          <div class="image">
-            <img src="Images/axes.svg" alt="axes">
-          </div>
-          <h2 class="title">our </h2>
-          <p class="des">
-            estibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Quisque velit nisi, pretium ut lacinia in,
-            elementum id enim. Donec sollicitudin molestie malesuada
-          </p>
-        </div>
-        */
-/* ------ Animation ------ */
+/* --------------------------------------------
+  padding-top: var(--MainPaddingTop);
+  padding-bottom: var(--MainPaddingBottom);
+*/
+/* ------ Animations ------ */
 /* -------- Bouncing Animation -------- */
   @keyframes bouncing {
     0%, 20%, 50%, 80%, 100% {
