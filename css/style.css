@@ -708,7 +708,7 @@
 /* Styling The Team Section */
   .team {
     padding-top: var(--MainPaddingTop);
-    padding-bottom: var(--MainPaddingBottom);
+    padding-bottom: calc(var(--MainPaddingBottom) + 100px);
   }
   .team .boxes {
     display: grid;
@@ -786,39 +786,264 @@
 /* Styling The About Section */
   .about {
     padding-top: var(--MainPaddingTop);
-    padding-bottom: var(--MainPaddingBottom);
   }
   .about .background {
     background-color: var(--MainColor);
-    height: 200px;
+    height: 225px;
     width: 100%;
     position: absolute;
   }
   .about .container {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(550px , 1fr));
+    gap: 30px;
   }
   .about .box {
     position: relative;
-    flex: 1;
+    height: 575px;
   }
   .about .box:first-of-type {
-
+    top: calc(-172px - 20px);
   }
   .about .box:last-of-type {
+    bottom: 145px;
   }
   .about .box .info-box {
     background-color: var(--MainAltColor);
-    height: 300px;
+    padding: 45px 26px;
+    height: 400px;
   }
   .about .box .info-des {
     color: white;
+    line-height: 1.8;
+  }
+  .about .quot {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .about .box:first-of-type .quot {
+    position: absolute;
+    bottom: 0;
+  }
+  .about .box:last-of-type .quot {
+    margin-bottom: 70px;
+  }
+  .about .quot q {
+    display: block;
+    text-align: center;
+    color: #333;
+    line-height: 1.6;
+  }
+  .about .quot .author {
+    font-weight: 700;
+    color: var(--MainAltColor);
+    text-transform: capitalize;
+    font-style: italic;
+  }
+  .about .box:last-of-type .author {
+    text-align: right;
+  }
+  .about .image-box {
+    background-color: var(--MainAltColor);
+    width: 100%;
+    height: 400px;
   }
 /* ----- Making The About Section Responsive ----- */
-
-/* --------------------------------------------
-  padding-top: var(--MainPaddingTop);
-  padding-bottom: var(--MainPaddingBottom);
-*/
+  @media (min-width: 768px) and (max-width: 1199px) {
+    .about .box .info-box {
+      max-width: 80%;
+      margin: 0 auto;
+    }
+  }
+  @media (max-width: 1199px) {
+    .team {
+      padding-bottom: unset;
+    }
+    .about {
+      padding-bottom: var(--MainPaddingBottom);
+    }
+    .about .background, 
+    .about .image-box{
+      display: none;
+    }
+    .about .container {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    .about .box,
+    .about .box .info-box,
+    .about .box:first-of-type .quot {
+      position: unset;
+      height: unset;
+    }
+    .about .box .info-box {
+      padding: 40px;
+    }
+    .about .box .quot {
+      border-bottom: 1px solid #444;
+      padding-bottom: 10px;
+    }
+    .about .box:first-of-type .quot {
+      margin: 40px auto 0;
+    }
+    .about .box:last-of-type .quot {
+      margin-bottom: unset;
+    }
+    .about .quot .author {
+      padding-top: 10px;
+      text-align: left !important;
+    }
+  }
+  @media (max-width: 575px) {
+    .about .box .info-box {
+      padding: 20px 10px;
+      max-height: 350px;
+      overflow-y: scroll;
+    }
+  }
+/* Styling The Footer Section */
+  footer {
+    padding-top: var(--MainPaddingTop);
+    background-color: var(--MainAltColor);
+  }
+  footer *:not(i) {
+    color: #BABABA;
+  }
+  footer > .container {
+    display: flex;
+  }
+  footer .image {
+    margin-bottom: 20px;
+  }
+  .footer-des {
+    max-width: 475px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+  }
+  footer .created {
+    margin-bottom: 8px;
+  }
+  footer .created a {
+    color: var(--MainColor);
+    transition: var(--MainTransition);
+  }
+  footer .created a:hover {
+    color: white;
+  }
+  footer .footer-links,
+  footer .contact-box {
+    flex: 1 1;
+  }
+  footer .fl-title {
+    text-transform: capitalize;
+    margin-bottom: 20px;
+    color: white;
+    font-weight: 400;
+    font-size: 18px;
+  }
+  footer .links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  footer .links > a {
+    text-transform: capitalize;
+    transition: var(--MainTransition);
+  }
+  footer .links > a:hover {
+    color: var(--MainColor);
+  }
+  footer .contact-des {
+    margin-bottom: 40px;
+    line-height: 1.6;
+  }
+  footer .contact.bth {
+    padding: 10px 20px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+  }
+  footer .contact.bth:hover {
+    box-shadow: 0 0 0 20px inset var(--MainAltColor);
+    background-color: transparent;
+    color: var(--MainColor);
+  }
+  footer .social {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 12px;
+  }
+  footer .social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    color: var(--MainAltColor);
+    background-color: white;
+    border: 2px solid white;
+    border-radius: 50%;
+    transition: var(--MainTransition);
+  }
+  footer .social a:hover {
+    background-color: var(--color);
+    color: white;
+    border-color: var(--color);
+    transform: rotate(1turn);
+  }
+  footer .coded {
+    padding: 25px;
+    text-align: center;
+    margin: 50px 0 0;
+    border-top: 1px solid #333;
+    color: white;
+    text-transform: capitalize;
+  }
+  footer .coded .author {
+    color: var(--MainColor);
+    font-weight: 700;
+  }
+/* ----- Making The Footer Section Responsive ----- */
+  @media (min-width: 1200px) {
+    footer .contact-box {
+      flex-basis: 100px;
+    }
+  }
+  @media (min-width: 992px) and (max-width: 1199px) {
+    footer .container {
+      padding: 10px 0;
+    }
+    .footer-des {
+      max-width: 425px;
+    }
+  }
+  @media (max-width: 991px) {
+    footer .container{
+      flex-direction: column;
+      align-items: center;
+      gap: 60px;
+    }
+    footer .info-box,
+    footer .footer-links,
+    footer .contact-box{
+      text-align: center;
+    }
+    footer .contact-des,
+    footer .contact.bth {
+      margin: 0 auto 40px;
+    }
+    footer .social {
+      justify-content: center;
+    }
+  }
+  @media (max-width: 375px) {
+    .footer-des {
+      font-size: 14px;
+    }
+  }
 /* ------ Animations ------ */
 /* -------- Bouncing Animation -------- */
   @keyframes bouncing {
